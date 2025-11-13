@@ -1,0 +1,15 @@
+[package]
+name = "git-ticket-pull"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.100"
+futures = "0.3.31"
+regex = "1.12.2"
+reqwest = { version = "0.12.24", features = ["json"] }
+serde = "1.0.228"
+structopt = "0.3.26"
+tokio = { version = "1.47.1", features = ["full"] }
+toml = "0.9.8"
+percent-encoding = "2.3.2"
