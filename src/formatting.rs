@@ -16,7 +16,7 @@ pub struct PersonEntry {
 
 impl std::fmt::Display for PersonEntry {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        writeln!(f, "== {}\n{} min\n", self.user.name, self.total_time_spent)?;
+        writeln!(f, "== {}\n{} h\n", self.user.name, (self.total_time_spent as f64 / 60.0).round() as i32)?;
         writeln!(f, "|===\n|Thema |Issues |Prozentangabe\n")?;
         self.tickets.iter().for_each(|e| {
             let percentage = e.time_spent * 100 / self.total_time_spent;
