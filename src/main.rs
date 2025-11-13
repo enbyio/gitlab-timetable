@@ -1,3 +1,6 @@
+// Portions of this code were written by Raphael ENßlin (github.com/rajakenhd) and originally released under GPLv3 (https://github.com/Rajakenhd/gitlab-timetable)
+// The copyright holder retains the right to use and relicense the code under different terms.
+
 mod config;
 mod data;
 mod formatting;
@@ -40,11 +43,13 @@ async fn generate_table() -> anyhow::Result<()> {
         .collect();
     let t = generate_time_table(times);
     let mut file = File::create(&config().output)?;
+    writeln!(file, "{}\n", config().preamble())?;
     writeln!(file, ":toc:")?;
     t.iter().for_each(|e| {
         println!("{e}");
         writeln!(file, "{e}").unwrap();
     });
+    writeln!(file, "{}", config().closing_remarks())?;
     println!("took {} seconds", start.elapsed().as_secs());
     Ok(())
 }

@@ -8,11 +8,13 @@ use structopt::StructOpt;
 
 #[derive(Deserialize, Debug)]
 pub struct ConfFile {
+    preamble: String,
     url: String,
     token: String,
     milestones: Vec<String>,
     parameters: Vec<(String, String)>,
     output: String,
+    closing_remarks: String,
 }
 
 #[derive(Debug)]
@@ -22,6 +24,8 @@ pub struct Config {
     pub path: String,
     pub parameters: Vec<(String, String)>,
     pub output: String,
+    pub preamble: String,
+    pub closing_remarks: String,
 }
 
 #[derive(Debug, StructOpt)]
@@ -78,6 +82,8 @@ impl Config {
             path: location,
             parameters: params,
             output: config.output,
+            preamble: config.preamble,
+            closing_remarks: config.closing_remarks
         })
     }
 
@@ -98,5 +104,13 @@ impl Config {
 
     pub fn endpoint(&self) -> String {
         self.path.to_owned()
+    }
+
+    pub fn preamble(&self) -> String {
+        self.preamble.to_owned()
+    }
+
+    pub fn closing_remarks(&self) -> String {
+        self.closing_remarks.to_owned()
     }
 }

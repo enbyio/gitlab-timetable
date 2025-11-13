@@ -1,3 +1,4 @@
+preamble = ""
 url = "https://gitlab.com/project-or-group-name"
 token = "..."
 milestones = ["milestone-name"]
@@ -5,3 +6,5 @@ parameters = [
     ["state", "closed"],
     ["include_subgroups", "true"]
 ]
+closing_remarks = ""
+output = "output.adoc"
